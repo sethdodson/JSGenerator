@@ -1,4 +1,3 @@
-var App = App || {};
 
 App.MeetsRequirements = function (abilities, requirements) {
 	var meetsRequirement = function (ability, requirement) {
