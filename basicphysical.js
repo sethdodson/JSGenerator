@@ -41,31 +41,34 @@ App.GetHeight = function (race, sex) {
 };
 
 App.GetWeight = function (race, sex) {
+	"use strict";
 	var raceAndSex = race + " " + sex;
 	switch (raceAndSex) {
-		case "Dwarf Male":
-			return App.Roll(4, 10) + 130;
-		case "Dwarf Female": 
-			return App.Roll(4, 10) + 105;
-		case "Elf Male":
-			return App.Roll(3, 10) + 90;
-		case "Elf Female":
-			return App.Roll(3, 10) + 70;
-		case "Gnome Male":
-			return App.Roll(5, 4) + 72;
-		case "Gnome Female":
-			return App.Roll(5, 4) + 68;
-		case "HalfElf Male":
-			return App.Roll(3, 12) + 110;
-		case "HalfElf Female":
-			return App.Roll(3, 12) + 85;
-		case "Halfling Male":
-			return App.Roll(5, 4) + 52;
-		case "Halfling Female":
-			return App.Roll(5, 4) + 48;
-		case "Human Male":
-			return App.Roll(6, 10) + 140;
-		case "Human Female":
-			return App.Roll(6, 10) + 100;
+	case "Dwarf Male":
+		return App.Roll(4, 10) + 130;
+	case "Dwarf Female":
+		return App.Roll(4, 10) + 105;
+	case "Elf Male":
+		return App.Roll(3, 10) + 90;
+	case "Elf Female":
+		return App.Roll(3, 10) + 70;
+	case "Gnome Male":
+		return App.Roll(5, 4) + 72;
+	case "Gnome Female":
+		return App.Roll(5, 4) + 68;
+	case "HalfElf Male":
+		return App.Roll(3, 12) + 110;
+	case "HalfElf Female":
+		return App.Roll(3, 12) + 85;
+	case "Halfling Male":
+		return App.Roll(5, 4) + 52;
+	case "Halfling Female":
+		return App.Roll(5, 4) + 48;
+	case "Human Male":
+		return App.Roll(6, 10) + 140;
+	case "Human Female":
+		return App.Roll(6, 10) + 100;
+	default:
+		throw "Cannot get weight for " + raceAndSex;
 	}
 };

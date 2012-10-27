@@ -1,5 +1,6 @@
 
 App.MeetsRequirements = function (abilities, requirements) {
+	"use strict";
 	var meetsRequirement = function (ability, requirement) {
 		return ability >= requirement.Minimum && ability <= requirement.Maximum;
 	},
@@ -9,5 +10,5 @@ App.MeetsRequirements = function (abilities, requirements) {
 		intelligenceOK = meetsRequirement(abilities.Intelligence, requirements.Intelligence),
 		wisdomOK = meetsRequirement(abilities.Wisdom, requirements.Wisdom),
 		charismaOK = meetsRequirement(abilities.Charisma, requirements.Charisma);
-		return strengthOK && dexterityOK && constitutionOK && intelligenceOK && wisdomOK && charismaOK;
+	return strengthOK && dexterityOK && constitutionOK && intelligenceOK && wisdomOK && charismaOK;
 };
