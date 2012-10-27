@@ -1,14 +1,11 @@
-App.MeetsRacialRequirements = function (race) {
+App.MeetsRacialRequirements = function (race, abilities) {
 	"use strict";
 	switch (race) {
 	case "Human":
-		return function (abilities) { 
-			return true;
-		};
+		return true;
 	case "Dwarf":
-		return function (abilities) {
 			return App.MeetsRequirements(abilities, {
-				Strength : { 
+				Strength : {
 					Minimum : 8,
 					Maximum : 18
 				},
@@ -32,10 +29,8 @@ App.MeetsRacialRequirements = function (race) {
 					Minimum : 3,
 					Maximum : 17
 				}
-			});
-		};
+		});
 	case "Elf":
-		return function (abilities) {
 			return App.MeetsRequirements(abilities, {
 				Strength : {
 					Minimum : 3,
@@ -60,11 +55,9 @@ App.MeetsRacialRequirements = function (race) {
 				Charisma : {
 					Minimum : 8,
 					Maximum : 18
-				}
+				}			
 		});
-	};
 	case "Gnome":
-		return function (abilities) {
 			return App.MeetsRequirements(abilities, {
 				Strength : {
 					Minimum : 6,
@@ -89,11 +82,9 @@ App.MeetsRacialRequirements = function (race) {
 				Charisma : {
 					Minimum : 3,
 					Maximum : 18
-				}
-			});
-		};
-	case "HalfElf":
-		return function (abilities) {
+				}			
+		});
+	case "HalfElf":		
 			return App.MeetsRequirements(abilities, {
 				Strength : {
 					Minimum : 3,
@@ -118,11 +109,9 @@ App.MeetsRacialRequirements = function (race) {
 				Charisma : {
 					Minimum : 3,
 					Maximum : 18
-				}
-			});
-		};
-	case "Halfling":
-		return function (abilities) {
+				}			
+		});
+	case "Halfling":		
 			return App.MeetsRequirements(abilities, {
 				Strength : {
 					Minimum : 7,
@@ -147,39 +136,41 @@ App.MeetsRacialRequirements = function (race) {
 				Charisma : {
 					Minimum : 3,
 					Maximum : 18
-				}
-			});
-		};		
+				}			
+		});
 	}
 };
 
 App.GetAvailableRaces = function (abilities) {
+	"use strict";
 	var availableRaces = LINQ.GetCollection(["Human", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling"]);
 	return availableRaces.Where(function (r) {
 		App.MeetsRacialRequirements(r);
 	});
+};
 
-App.GetRacialAdjustments = function(race, abilities) {
+App.GetRacialAdjustments = function (race, abilities) {
+	"use strict";
 	switch (race) {
-		case "Human": 
-			return abilities;
-		case "HalfElf":
-			return abilities;
-		case "Dwarf":
-			abilities.Constitution = abilities.Constitution + 1;
-			abilities.Charisma = abilities.Charisma - 1;
-			return abilities;
-		case "Elf":
-			abilities.Dexterity = abilities.Dexterity + 1;
-			abilities.Constitution = abilities.Constitution - 1;
-			return abilities;
-		case "Gnome":
-			abilities.Intelligence = abilities.Intelligence + 1;
-			abilities.Wisdom = abilities.Wisdom - 1;
-			return abilities;
-		case "Halfling":
-			abilities.Dexterity = abilities.Dexterity + 1;
-			abilities.Strength = abilities.Strength - 1;
-			return abilities;
+	case "Human":
+		return abilities;
+	case "HalfElf":
+		return abilities;
+	case "Dwarf":
+		abilities.Constitution = abilities.Constitution + 1;
+		abilities.Charisma = abilities.Charisma - 1;
+		return abilities;
+	case "Elf":
+		abilities.Dexterity = abilities.Dexterity + 1;
+		abilities.Constitution = abilities.Constitution - 1;
+		return abilities;
+	case "Gnome":
+		abilities.Intelligence = abilities.Intelligence + 1;
+		abilities.Wisdom = abilities.Wisdom - 1;
+		return abilities;
+	case "Halfling":
+		abilities.Dexterity = abilities.Dexterity + 1;
+		abilities.Strength = abilities.Strength - 1;
+		return abilities;
 	}
 };
