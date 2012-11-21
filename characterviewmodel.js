@@ -1,3 +1,3 @@
 function getViewModel() {
-	var rollAbilityScores
+	//var rollAbilityScores 
 }

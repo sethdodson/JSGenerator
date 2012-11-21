@@ -36,7 +36,27 @@ LINQ.GetCollection = function (standardArray) {
 				}
 			}
 			return false;
-		}
+		},
+        Random : function () {
+            var selection = Math.floor(Math.random() * standardArray.length);
+            return standardArray[selection];
+        },
+        First : function (filter) {
+            var i = 0;
+            for (i; i < collection.length; i = i + 1) {
+                if (filter(collection[i]) === true) {
+                    return collection[i];
+                }
+            }
+        },
+        Sum : function () {
+            var i = 0,
+                total = 0;
+            for (i; i < collection.length; i = i + 1) {
+                total += collection[i];
+            }
+            return total;
+        }
 	};
 	collection.All = function (predicate) {
 		var opposite = function (item) {
