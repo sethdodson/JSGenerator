@@ -1,7 +1,6 @@
-﻿App.GetAvailableClasses = (function () {
+App.GetAvailableClasses = (function () {
     "use strict";
     //check all abilities against class minimums
-    //to be 
     var meetsMinimums = function (abilities, minimums) {
         return minimums.All(function (minimum) {
             return abilities[minimum.Name] >= minimum.Value;
@@ -89,7 +88,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling"]),
             Priority : "Mundane",
-            PrerequisiteValue : prerequisiteValue(fighterMinimums)
+            PrerequisiteValue : prerequisiteValue(fighterMinimums),
+            ClassType : "Warrior"
         },
         paladin = {
             Name : "Paladin",
@@ -103,7 +103,8 @@
             }]),
             AvailableRaces : LINQ.GetCollection(["Human"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(paladinMinimums)
+            PrerequisiteValue : prerequisiteValue(paladinMinimums),
+            ClassType : "Warrior"
         },
         ranger = {
             Name : "Ranger",
@@ -123,7 +124,8 @@
             }]),
             AvailableRaces : LINQ.GetCollection(["Human", "Elf", "HalfElf"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(rangerMinimums)
+            PrerequisiteValue : prerequisiteValue(rangerMinimums),
+            ClassType : "Warrior"
         },
         mage = {
             Name : "Mage",
@@ -134,7 +136,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Elf", "HalfElf"]),
             Priority : "Mundane",
-            PrerequisiteValue : prerequisiteValue(mageMinimums)
+            PrerequisiteValue : prerequisiteValue(mageMinimums),
+            ClassType : "Wizard"
         },
         abjurer = {
             Name : "Abjurer",
@@ -145,7 +148,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(abjurerMinimums)
+            PrerequisiteValue : prerequisiteValue(abjurerMinimums),
+            ClassType : "Wizard"
         },
         conjurer = {
             Name : "Conjurer",
@@ -156,7 +160,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "HalfElf"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(conjurerMinimums)
+            PrerequisiteValue : prerequisiteValue(conjurerMinimums),
+            ClassType : "Wizard"
         },
         diviner = {
             Name : "Diviner",
@@ -167,7 +172,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Elf", "HalfElf"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(divinerMinimums)
+            PrerequisiteValue : prerequisiteValue(divinerMinimums),
+            ClassType : "Wizard"
         },
         enchanter = {
             Name : "Enchanter",
@@ -178,7 +184,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Elf", "HalfElf"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(enchanterMinimums)
+            PrerequisiteValue : prerequisiteValue(enchanterMinimums),
+            ClassType : "Wizard"
         },
         illusionist = {
             Name : "Illusionist",
@@ -189,7 +196,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Gnome"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(illusionistMinimums)
+            PrerequisiteValue : prerequisiteValue(illusionistMinimums),
+            ClassType : "Wizard"
         },
         invoker = {
             Name : "Invoker",
@@ -200,7 +208,8 @@
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Gnome"]),
             Priority : "Prestige",
-            PrerequisiteValue : prerequisiteValue(invokerMinimums)
+            PrerequisiteValue : prerequisiteValue(invokerMinimums),
+            ClassType : "Wizard"
         },
         necromancer = {
             Name : "Necromancer",
@@ -210,7 +219,9 @@
             },
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human"]),
-            Priority : "Prestige"
+            Priority : "Prestige",
+            PrerequisiteValue : prerequisiteValue(necromancerMinimums),
+            ClassType : "Wizard"
         },
         transmuter = {
             Name : "Transmuter",
@@ -220,7 +231,9 @@
             },
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "HalfElf"]),
-            Priority : "Prestige"
+            Priority : "Prestige",
+            PrerequisiteValue : prerequisiteValue(transmuterMinimums),
+            ClassType : "Wizard"
         },
         cleric = {
             Name : "Cleric",
@@ -230,7 +243,9 @@
             },
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling"]),
-            Priority : "Mundane"
+            Priority : "Mundane",
+            PrerequisiteValue : prerequisiteValue(clericMinimums),
+            ClassType : "Priest"
         },
         druid = {
             Name : "Druid",
@@ -243,7 +258,9 @@
                 Morality : "Neutral"
             }]),
             AvailableRaces : LINQ.GetCollection(["Human", "HalfElf"]),
-            Priority : "Prestige"
+            Priority : "Prestige",
+            PrerequisiteValue : prerequisiteValue(druidMinimums),
+            ClassType : "Priest"
         },
         thief = {
             Name : "Thief",
@@ -253,7 +270,9 @@
             },
             AvailableAlignments : alignments,
             AvailableRaces : LINQ.GetCollection(["Human", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling"]),
-            Priority : "Mundane"
+            Priority : "Mundane",
+            PrerequisiteValue : prerequisiteValue(thiefMinimums),
+            ClassType : "Rogue"
         },
         bard = {
             Name : "Bard",
@@ -271,7 +290,9 @@
                 return false;
             }),
             AvailableRaces : LINQ.GetCollection(["Human", "HalfElf"]),
-            Priority : "Prestige"
+            Priority : "Prestige",
+            PrerequisiteValue : prerequisiteValue(bardMinimums),
+            ClassType : "Rogue"
         },
         allClasses = LINQ.GetCollection([
             fighter,
@@ -300,3 +321,28 @@
         });
     };
 })();
+
+App.PickClass = function (availableClasses) {
+    var prestigeClasses = availableClasses.Where(function (characterClass) {
+        return characterClass.Priority === "Prestige";
+    }),
+        mundaneClasses = availableClasses.Where(function (characterClass) {
+            return characterClass.Priority === "Mundane";
+        }),        
+        chooseClass = function (classes) {
+            var classSelections = classes.SelectMany(function (characterClass) {
+                var prerequisiteValue = characterClass.PrerequisiteValue,
+                    i = 0,
+                    selectedClasses = [];
+                for (i; i < prerequisiteValue; i = i + 1) {
+                    selectedClasses.push[characterClass];
+                }
+                return selectedClasses;
+            });
+            return classSelections.Random();
+        }
+    if (prestigeClasses.Length > 0) {
+        return chooseClass(prestigeClasses);
+    }
+    return chooseClass(mundaneClasses);
+};
