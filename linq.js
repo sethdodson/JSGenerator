@@ -80,6 +80,13 @@ LINQ.GetCollection = function (standardArray) {
             Length : arrayLength,
             Add : function (item) {
                 standardArray.push(item);
+            },
+            AddRange : function (items) {
+                var i = 0,
+                    itemsLength = items.length;
+                for (i; i < itemsLength; i = i + 1) {
+                    standardArray.push(items[i]);
+                }
             }
         };
     collection.All = function (predicate) {

@@ -1,4 +1,5 @@
 App.GetNewCharacter = function (level) {
+    "use strict";
     var abilities = App.RollAbilityScores(),
         availableRaces = App.GetAvailableRaces(abilities),
         race = availableRaces.Random(),
@@ -42,6 +43,14 @@ App.GetNewCharacter = function (level) {
         MaxSpellLevel : App.GetMaxSpellLevel(adjustedAbilities.Intelligence),
         ChanceToLearnSpell : App.GetChanceToLearnSpell(adjustedAbilities.Intelligence),
         MaxNumberOfSpellsPerLevel : App.GetMaxNumberOfSpellsPerLevel(adjustedAbilities.Intelligence),
-        IllusionImmunity : App.GetIllusionImmunity(adjustedAbilities.Intelligence)
+        IllusionImmunity : App.GetIllusionImmunity(adjustedAbilities.Intelligence),
+        MagicalDefenseAdjustment : App.GetMagicalDefenseAdjustment(adjustedAbilities.Wisdom),
+        BonusPriestSpells : App.GetBonusSpells(adjustedAbilities.Wisdom),
+        ChanceOfSpellFailure : App.GetChanceOfSpellFailure(adjustedAbilities.Wisdom),
+        MaximumNumberOfHenchmen : App.GetMaximumNumberOfHenchmen(adjustedAbilities.Charisma),
+        LoyaltyBase : App.GetLoyaltyBase(adjustedAbilities.Charisma),
+        CharismaReactionAdjustment : App.GetCharismaReactionAdjustment(adjustedAbilities.Charisma),
+        HitPoints : App.GetHitPoints(chosenClass.ClassType, level, hitPointBonus),
+        SpellImmunity : App.GetSpellImmunity(adjustedAbilities.Wisdom)
     };
 };
