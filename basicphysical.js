@@ -1,10 +1,11 @@
-App.ChooseSex = function() {
+App.ChooseSex = function () {
+    "use strict";
     var dieRoll = App.Roll(1, 2);
     if (dieRoll === 1) {
         return "Male";
     }
     return "Female";
-}
+};
 
 App.GetHeight = function (race, sex) {
     "use strict";
@@ -79,4 +80,28 @@ App.GetWeight = function (race, sex) {
     default:
         throw "Cannot get weight for " + raceAndSex;
     }
+};
+
+App.GetHairColor = function (race, age) {
+    "use strict";
+    var hairColors = LINQ.GetCollection(["Black", "Brown", "Blond", "Auburn", "Chestnut", "Red"]),
+        ageClass = App.GetAgeClass(race, age);
+    if (ageClass === "Young") {
+        return hairColors.Random();
+    }
+    if (ageClass === "MiddleAge") {
+        return "Gray-" + hairColors.Random();
+    }
+    if (ageClass === "OldAge") {
+        return "Gray";
+    }
+    if (ageClass === "Venerable") {
+        return "White";
+    }
+};
+
+App.GetEyeColor = function () {
+    "use strict";
+    var eyeColors = LINQ.GetCollection(["Amber", "Blue", "Brown", "Gray", "Green", "Hazel"]);
+    return eyeColors.Random();
 };

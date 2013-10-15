@@ -72,7 +72,7 @@ App.GetAvailableClasses = (function () {
         transmuterMinimums =  LINQ.GetCollection([intMinimum(9), dexMinimum(15)]),
         clericMinimums = LINQ.GetCollection([wisMinimum(9)]),
         druidMinimums = LINQ.GetCollection([wisMinimum(12), charMinimum(15)]),
-        thiefMinimums = LINQ.GetCollection([dexMinimum(9)]),       
+        thiefMinimums = LINQ.GetCollection([dexMinimum(9)]),
         bardMinimums = LINQ.GetCollection([dexMinimum(12), intMinimum(13), charMinimum(15)]),
         prerequisiteValue = function (minimums) {
             return minimums.Select(function (min) {

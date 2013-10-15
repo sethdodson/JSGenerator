@@ -18,9 +18,9 @@ App.GetStartingAge = function (race) {
     }
 };
 
-App.ModifyForAgingEffects = function (abilities, race, age) {
+App.GetAgeClass = function (race, age) {
     "use strict";
-    var getAgeClass = function (ageMaximums) {
+    var ageClass = function (ageMaximums) {
         if (age < ageMaximums.Young) {
             return "Young";
         }
@@ -31,53 +31,54 @@ App.ModifyForAgingEffects = function (abilities, race, age) {
             return "OldAge";
         }
         return "Venerable";
-    },
-        ageClass = (function () {
-            switch (race) {
-            case "Dwarf":
-                return getAgeClass({
-                    Young : 125,
-                    MiddleAge : 167,
-                    OldAge : 250
-                });
-            case "Elf":
-                return getAgeClass({
-                    Young : 175,
-                    MiddleAge : 233,
-                    OldAge : 350
-                });
-            case "Gnome":
-                return getAgeClass({
-                    Young : 100,
-                    MiddleAge : 133,
-                    OldAge : 200
-                });
-            case "HalfElf":
-                return getAgeClass({
-                    Young : 62,
-                    MiddleAge : 83,
-                    OldAge : 125
-                });
-            case "Halfling":
-                return getAgeClass({
-                    Young : 50,
-                    MiddleAge : 67,
-                    OldAge : 100
-                });
-            case "Human":
-                return getAgeClass({
-                    Young : 45,
-                    MiddleAge : 60,
-                    OldAge : 90
-                });
-            default:
-                throw "Cannot get age class for " + race;
-            }
-        }());
-    switch (ageClass) {
+    };
+    switch (race) {
+    case "Dwarf":
+        return ageClass({
+            Young : 125,
+            MiddleAge : 167,
+            OldAge : 250
+        });
+    case "Elf":
+        return ageClass({
+            Young : 175,
+            MiddleAge : 233,
+            OldAge : 350
+        });
+    case "Gnome":
+        return ageClass({
+            Young : 100,
+            MiddleAge : 133,
+            OldAge : 200
+        });
+    case "HalfElf":
+        return ageClass({
+            Young : 62,
+            MiddleAge : 83,
+            OldAge : 125
+        });
+    case "Halfling":
+        return ageClass({
+            Young : 50,
+            MiddleAge : 67,
+            OldAge : 100
+        });
+    case "Human":
+        return ageClass({
+            Young : 45,
+            MiddleAge : 60,
+            OldAge : 90
+        });
+    default:
+        throw "Cannot get age class for " + race;
+    }
+};
+
+App.ModifyForAgingEffects = function (abilities, race, age) {
+    "use strict";
+    switch (App.GetAgeClass(race, age)) {
     case "Young":
         return abilities;
-    //HACK! Original F# returns with immutable types, but this uses side effects.    
     case "MiddleAge":
         abilities.Strength = abilities.Strength - 1;
         abilities.Constitution = abilities.Constitution - 1;

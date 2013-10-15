@@ -1,3 +1,6 @@
 function getViewModel() {
-    //var rollAbilityScores 
+    "use strict";
+    var viewModel = {
+
+    };
 }

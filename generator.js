@@ -51,6 +51,8 @@ App.GetNewCharacter = function (level) {
         LoyaltyBase : App.GetLoyaltyBase(adjustedAbilities.Charisma),
         CharismaReactionAdjustment : App.GetCharismaReactionAdjustment(adjustedAbilities.Charisma),
         HitPoints : App.GetHitPoints(chosenClass.ClassType, level, hitPointBonus),
-        SpellImmunity : App.GetSpellImmunity(adjustedAbilities.Wisdom)
+        SpellImmunity : App.GetSpellImmunity(adjustedAbilities.Wisdom),
+        HairColor : App.GetHairColor(race, age),
+        EyeColor : App.GetEyeColor()
     };
 };
