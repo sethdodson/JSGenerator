@@ -1,4 +1,4 @@
-App.GetAvailableClasses = (function () {
+App.GetAvailableClasses = function (race, adjustedAbilities) {
     "use strict";
     //check all abilities against class minimums
     var meetsMinimums = function (abilities, minimums) {
@@ -312,35 +312,34 @@ App.GetAvailableClasses = (function () {
             thief,
             bard
         ]);
-    return function (race, abilities) {
-        return allClasses.Where(function (characterClass) {
-            if (characterClass.MeetsMinimums(abilities) === false) {
-                return false;
-            }
-            return characterClass.AvailableRaces.Contains(race);
-        });
-    };
-})();
+    return allClasses.Where(function (characterClass) {
+        if (characterClass.MeetsMinimums(adjustedAbilities) === false) {
+            return false;
+        }
+        return characterClass.AvailableRaces.Contains(race);
+    });
+};
 
 App.PickClass = function (availableClasses) {
+    "use strict";
     var prestigeClasses = availableClasses.Where(function (characterClass) {
         return characterClass.Priority === "Prestige";
     }),
         mundaneClasses = availableClasses.Where(function (characterClass) {
             return characterClass.Priority === "Mundane";
-        }),        
+        }),
         chooseClass = function (classes) {
             var classSelections = classes.SelectMany(function (characterClass) {
                 var prerequisiteValue = characterClass.PrerequisiteValue,
                     i = 0,
                     selectedClasses = [];
                 for (i; i < prerequisiteValue; i = i + 1) {
-                    selectedClasses.push[characterClass];
+                    selectedClasses[i] = characterClass;
                 }
                 return selectedClasses;
             });
             return classSelections.Random();
-        }
+        };
     if (prestigeClasses.Length > 0) {
         return chooseClass(prestigeClasses);
     }

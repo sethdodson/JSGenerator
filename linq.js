@@ -1,13 +1,12 @@
-var LINQ = LINQ || {};
+var LINQ = {};
 
 LINQ.GetCollection = function (standardArray) {
     "use strict";
-    var arrayLength = standardArray.length,
-        collection = {
+    var collection = {
             Select : function (selector) {
                 var i = 0,
                     newCollection = [];
-                for (i; i < arrayLength; i = i + 1) {
+                for (i; i < standardArray.length; i = i + 1) {
                     newCollection[i] = selector(standardArray[i]);
                 }
                 return LINQ.GetCollection(newCollection);
@@ -15,21 +14,21 @@ LINQ.GetCollection = function (standardArray) {
             SelectMany : function (selector) {
                 var i = 0,
                     newCollection = [];
-                for (i; i < arrayLength; i = i + 1) {
-                    newCollection.concat(selector[i]);
+                for (i; i < standardArray.length; i = i + 1) {
+                    newCollection = newCollection.concat(selector(standardArray[i]));
                 }
                 return LINQ.GetCollection(newCollection);
             },
             ForEach : function (action) {
                 var i = 0;
-                for (i; i < arrayLength; i = i + 1) {
+                for (i; i < standardArray.length; i = i + 1) {
                     action(standardArray[i]);
                 }
             },
             Where : function (filter) {
                 var i = 0,
                     newCollection = [];
-                for (i; i < arrayLength; i = i + 1) {
+                for (i; i < standardArray.length; i = i + 1) {
                     if (filter(standardArray[i]) === true) {
                         newCollection.push(standardArray[i]);
                     }
@@ -38,7 +37,7 @@ LINQ.GetCollection = function (standardArray) {
             },
             Any : function (predicate) {
                 var i = 0;
-                for (i; i < arrayLength; i = i + 1) {
+                for (i; i < standardArray.length; i = i + 1) {
                     if (predicate(standardArray[i]) === true) {
                         return true;
                     }
@@ -46,12 +45,12 @@ LINQ.GetCollection = function (standardArray) {
                 return false;
             },
             Random : function () {
-                var selection = Math.floor(Math.random() * arrayLength);
+                var selection = Math.floor(Math.random() * standardArray.length);
                 return standardArray[selection];
             },
             First : function (filter) {
                 var i = 0;
-                for (i; i < arrayLength; i = i + 1) {
+                for (i; i < standardArray.length; i = i + 1) {
                     if (filter(standardArray[i]) === true) {
                         return standardArray[i];
                     }
@@ -60,7 +59,7 @@ LINQ.GetCollection = function (standardArray) {
             Sum : function () {
                 var i = 0,
                     total = 0;
-                for (i; i < arrayLength; i = i + 1) {
+                for (i; i < standardArray.length; i = i + 1) {
                     total += standardArray[i];
                 }
                 return total;
@@ -75,9 +74,9 @@ LINQ.GetCollection = function (standardArray) {
                 return standardArray[0];
             },
             Tail : function () {
-                return standardArray[arrayLength - 1];
+                return standardArray[standardArray.length - 1];
             },
-            Length : arrayLength,
+            Length : standardArray.length,
             Add : function (item) {
                 standardArray.push(item);
             },
@@ -87,7 +86,17 @@ LINQ.GetCollection = function (standardArray) {
                 for (i; i < itemsLength; i = i + 1) {
                     standardArray.push(items[i]);
                 }
-            }
+            },
+            Contains : function (item) {
+                var i = 0;
+                for (i; i < standardArray.length; i = i + 1) {
+                    if (item === standardArray[i]) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            StandardArray : standardArray
         };
     collection.All = function (predicate) {
         var opposite = function (item) {

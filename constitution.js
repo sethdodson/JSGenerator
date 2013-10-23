@@ -21,7 +21,7 @@
     if (characterClass.ClassType !== "Warrior") {
         return 2;
     }
-    if (constitution === 17) { 
+    if (constitution === 17) {
         return 3;
     }
     if (constitution === 18) {
@@ -119,14 +119,15 @@ App.GetPoisonSaveBonus = function (constitution) {
 };
 
 App.GetRegeneration = function (constitution) {
+    "use strict";
     if (constitution < 20) {
         return {
-            Hitpoints : 0,
+            HitPoints : 0,
             Turns : 1
         };
     }
     return {
-        Hitpoints : 1,
+        HitPoints : 1,
         Turns : 26 - constitution
     };
 };

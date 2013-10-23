@@ -147,7 +147,7 @@ App.GetAvailableRaces = function (abilities) {
     "use strict";
     var availableRaces = LINQ.GetCollection(["Human", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling"]);
     return availableRaces.Where(function (r) {
-        App.MeetsRacialRequirements(r, abilities);
+        return App.MeetsRacialRequirements(r, abilities);
     });
 };
 

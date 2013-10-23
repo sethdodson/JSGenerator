@@ -1,4 +1,4 @@
-var App = App || {};
+var App = {};
 
 App.Roll = function (numberOfDice, sides) {
     "use strict";

@@ -31,7 +31,7 @@ App.GetNewCharacter = function (level) {
         OpenDoors : App.GetOpenDoors(adjustedAbilities.Strength, charExceptionalStrength),
         OpenHardenedDoors : App.GetOpenHardenedDoors(adjustedAbilities.Strength, charExceptionalStrength),
         BendBars : App.GetBendBars(adjustedAbilities.Strength, charExceptionalStrength),
-        DexReactionAdjustment : App.GetDexReactionAdjustment(adjustedAbilities.Dexterity),
+        DexReactionAdjustment : App.GetDexterityReactionAdjustment(adjustedAbilities.Dexterity),
         MissileAttackAdjustment : App.GetMissileAttackAdjustment(adjustedAbilities.Dexterity),
         DefensiveAdjustment : App.GetDefensiveAdjustment(adjustedAbilities.Dexterity),
         HitPointAdjustment : hitPointBonus,
