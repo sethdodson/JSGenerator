@@ -1,52 +1,50 @@
 <!DOCTYPE HTML>
 <html>
-	<head>	
-		<title>DND Character Generator</title>
-		<script src="knockout.js"></script>
-		<script src="linq.js"></script>
-		<script src="dice.js"></script>
-		<script src="stats.js"></script>
-		<script src="race.js"></script>
-		<script src="basicphysical.js"></script>
-		<script src="aging.js"></script>
-        <script src="class.js"></script>
-        <script src="strength.js"></script>
-        <script src="dexterity.js"></script>
-        <script src="constitution.js"></script>
-        <script src="intelligence.js"></script>
-        <script src="wisdom.js"></script>
-        <script src="charisma.js"></script>
-        <script src="experienceLevels.js"></script>
-        <script src="generator.js"></script>
-	</head>
-	<body>
+<head>
+    <title>DND Character Generator</title>
+    <script src="knockout.js"></script>
+    <script src="linq.js"></script>
+    <script src="dice.js"></script>
+    <script src="stats.js"></script>
+    <script src="race.js"></script>
+    <script src="basicphysical.js"></script>
+    <script src="aging.js"></script>
+    <script src="class.js"></script>
+    <script src="strength.js"></script>
+    <script src="dexterity.js"></script>
+    <script src="constitution.js"></script>
+    <script src="intelligence.js"></script>
+    <script src="wisdom.js"></script>
+    <script src="charisma.js"></script>
+    <script src="experienceLevels.js"></script>
+    <script src="generator.js"></script>
+    <link href="generator.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="characterSheet">
         <div id="hitpointsDiv">
-            <p id="hitpointsTitle">Hit Points</p>
+            <p id="hitpointsTitle">
+                Hit Points</p>
             <strong data-bind="text: HitPoints" id="hitpoints"></strong>
         </div>
         <div id="alignmentDiv">
-            <p id="alignmentTitle">Alignment</p>
+            <p id="alignmentTitle">
+                Alignment</p>
             <strong data-bind="text: Alignment" id="alignment"></strong>
         </div>
         <div id="raceDiv">
-            <p id="raceTitle">Race</p>
+            <p id="raceTitle">
+                Race</p>
             <strong data-bind="text: Race" id="race"></strong>
         </div>
         <div id="classDiv">
-            <p id="classTitle">Class</p>
+            <p id="classTitle">
+                Class</p>
             <strong data-bind="text: Class" id="class"></strong>
         </div>
-        <button id="generateButton" data-bind="click: Generate">Generate</button>
-        <script src="characterviewmodel.js"></script>
-        <!--		<p>Enter Number of Dice: <input data-bind="value: NumberOfDice" /></p>
-		<p>Enter Number of Sides: <input data-bind="value: Sides" /></p>
-		<button data-bind="click: Roll">Roll</button>
-		<p>Results: <strong data-bind="text: Result"></strong></p>-->
-<!--        <p>First name: <strong data-bind="text: firstName"></strong></p>
-<p>Last name: <strong data-bind="text: lastName"></strong></p>
-<p>Full name: <strong data-bind="text: fullName"></strong></p>
-<p>First name: <input data-bind="value: firstName" /></p>
-<p>Last name: <input data-bind="value: lastName" /></p>
-<button data-bind="click: capitalizeLastName">Go caps</button>-->
-	</body>
+        <button id="generateButton" data-bind="click: Generate">
+            Generate</button>
+    </div>
+    <script src="characterviewmodel.js"></script>
+</body>
 </html>

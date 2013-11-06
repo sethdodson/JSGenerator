@@ -6,7 +6,7 @@
         }
         return App.Roll(9, 10) + ((level - 9) * 3) + hitpointBonus;
     }
-    if (classType === "Thaumaturge") {
+    if (classType === "Wizard") {
         if (level < 11) {
             return App.Roll(level, 4) + hitpointBonus;
         }

@@ -62,8 +62,11 @@ App.GetViewModel = function () {
                         return "1/1 turn";
                     }
                     return character.Regeneration.HitPoints + "/" + character.Regeneration.Turns + " turns";
+                },
+                displayAlignment = function () {
+                    
                 };
-            viewModel.Alignment(character.Alignment);
+            viewModel.Alignment(character.Alignment.Legality + "/" + character.Alignment.Morality);
             viewModel.Race(character.Race);
             viewModel.Class(character.Class.Name);
             viewModel.Level(1);
