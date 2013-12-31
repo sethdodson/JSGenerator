@@ -4,3 +4,15 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+.hiddenField
+{
+	visibility:hidden;	
+}
+.fieldName
+{
+	font-weight: bold;
+}
+.fieldValue
+{
+	
+}

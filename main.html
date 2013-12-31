@@ -22,25 +22,32 @@
 </head>
 <body>
     <div id="characterSheet">
+        <div id="character">
+            <p class="field">
+                <div class="fieldName">Character</div>
+                <input data-bind="css: CharacterNameInputVisibility, value: CharacterName" />
+                <div data-bind="css: CharacterNameDisplayVisibility, text: CharacterName"></div>
+            </p>
+        </div>
         <div id="hitpointsDiv">
             <p id="hitpointsTitle">
                 Hit Points</p>
-            <strong data-bind="text: HitPoints" id="hitpoints"></strong>
+            <p data-bind="text: HitPoints" id="hitpoints"></p>
         </div>
         <div id="alignmentDiv">
             <p id="alignmentTitle">
                 Alignment</p>
-            <strong data-bind="text: Alignment" id="alignment"></strong>
+            <p data-bind="text: Alignment" id="alignment"></p>
         </div>
         <div id="raceDiv">
             <p id="raceTitle">
                 Race</p>
-            <strong data-bind="text: Race" id="race"></strong>
+            <p data-bind="text: Race" id="race"></p>
         </div>
         <div id="classDiv">
             <p id="classTitle">
                 Class</p>
-            <strong data-bind="text: Class" id="class"></strong>
+            <p data-bind="text: Class" id="class"></p>
         </div>
         <button id="generateButton" data-bind="click: Generate">
             Generate</button>

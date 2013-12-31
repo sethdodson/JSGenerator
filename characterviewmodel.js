@@ -44,7 +44,10 @@ App.GetViewModel = function () {
             HitPoints : ko.observable(0),
             SpellImmunity : ko.observable(0),
             HairColor : ko.observable(""),
-            EyeColor : ko.observable("")
+            EyeColor : ko.observable(""),
+            CharacterName : ko.observable(""),
+            CharacterNameInputVisibility : ko.observable(""),
+            CharacterNameDisplayVisibility : ko.observable("")
         };
         viewModel.Generate = function () {
             var character = App.GetNewCharacter(1),
@@ -62,9 +65,6 @@ App.GetViewModel = function () {
                         return "1/1 turn";
                     }
                     return character.Regeneration.HitPoints + "/" + character.Regeneration.Turns + " turns";
-                },
-                displayAlignment = function () {
-                    
                 };
             viewModel.Alignment(character.Alignment.Legality + "/" + character.Alignment.Morality);
             viewModel.Race(character.Race);
@@ -110,6 +110,9 @@ App.GetViewModel = function () {
             viewModel.SpellImmunity(character.SpellImmunity);
             viewModel.HairColor(character.HairColor);
             viewModel.EyeColor(character.EyeColor);
+            viewModel.CharacterName("test");
+            viewModel.CharacterNameInputVisibility("fieldValue");
+            viewModel.CharacterNameDisplayVisibility("hiddenField");
         };
     return viewModel;
 };
