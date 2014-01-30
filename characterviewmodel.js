@@ -45,9 +45,7 @@ App.GetViewModel = function () {
             SpellImmunity : ko.observable(0),
             HairColor : ko.observable(""),
             EyeColor : ko.observable(""),
-            CharacterName : ko.observable(""),
-            CharacterNameInputVisibility : ko.observable(""),
-            CharacterNameDisplayVisibility : ko.observable("")
+            CharacterName : ko.observable("")
         };
         viewModel.Generate = function () {
             var character = App.GetNewCharacter(1),
@@ -110,9 +108,6 @@ App.GetViewModel = function () {
             viewModel.SpellImmunity(character.SpellImmunity);
             viewModel.HairColor(character.HairColor);
             viewModel.EyeColor(character.EyeColor);
-            viewModel.CharacterName("test");
-            viewModel.CharacterNameInputVisibility("fieldValue");
-            viewModel.CharacterNameDisplayVisibility("hiddenField");
         };
     return viewModel;
 };

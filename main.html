@@ -22,13 +22,10 @@
 </head>
 <body>
     <div id="characterSheet">
-        <div id="character">
-            <p class="field">
-                <div class="fieldName">Character</div>
-                <input data-bind="css: CharacterNameInputVisibility, value: CharacterName" />
-                <div data-bind="css: CharacterNameDisplayVisibility, text: CharacterName"></div>
-            </p>
-        </div>
+    <div id="characterName">
+        <div class="fieldName">Character</p>
+        <input data-bind="value: CharacterName">
+    </div>
         <div id="hitpointsDiv">
             <p id="hitpointsTitle">
                 Hit Points</p>
